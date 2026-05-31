@@ -1,32 +1,71 @@
-# JJK RESTAURANT OPERATIONS - PART 2
+# Restaurant Simulation
 
-## Overview
-This project is an implementation of data structures to simulate restaurant operations for two restaurant owners, Gojo and Sukuna. It is part of the Data Structures and Algorithms course at Ho Chi Minh City University of Technology (HCMUT).
+A C++ console application simulating restaurant customer operations using custom-implemented tree and hash table data structures, built as a Data Structures and Algorithms course project at HCMUT.
 
-## Learning Outcomes
-By completing this project, students will:
-- Implement tree-based data structures and hash tables.
-- Choose appropriate data structures to optimize performance and meet the project requirements.
+## Tech Stack
 
-## Project Description
-The story revolves around Gojo and Sukuna managing their own restaurants before they decided to merge. The program will handle various customer-related operations using specified commands.
+- **Language:** C++11
+- **Compiler:** g++ (MinGW-W64) 11.2.0
+- **Data Structures:** Custom tree, custom hash table, doubly-linked list
 
-## Requirements
-- Use the provided `initial.zip` which contains `main.cpp`, `main.h`, `restaurant.cpp`, and `test.txt`.
-- Modify only `restaurant.cpp` to implement the required functionalities.
-- Ensure only `#include "main.h"` is used in `restaurant.cpp`.
-- The program should properly handle memory allocation and deallocation.
+## Features
 
-## Academic Integrity
-- All code must be written individually.
-- Any suspicious similarity between submissions will be considered plagiarism.
-- Students must be able to explain their own code when asked.
+- Custom tree and hash table implementations without standard library containers
+- Doubly-linked customer list with name and energy attributes
+- Command-based interface for customer management operations
+- Two-restaurant simulation (Gojo and Sukuna themed)
+- Manual memory allocation and deallocation
 
-## Compilation and Execution
-The project will be compiled and tested using:
+## Project Structure
+
 ```
-g++ (MinGW-W64 i686-ucrt-posix-dwarf) 11.2.0
+├── main.cpp         # Entry point (read-only)
+├── main.h           # Restaurant abstract class & customer struct
+├── Restaurant.cpp   # Data structure implementation
+├── test.txt         # Test input cases
+└── test2.txt        # Additional test cases
 ```
-Ensure that the code runs successfully under this environment.
 
+## Data Structure Design
 
+**Customer node:**
+```cpp
+class customer {
+    string name;
+    int energy;
+    customer* prev;
+    customer* next;
+};
+```
+
+**Restaurant interface (abstract):**
+
+| Method | Description |
+|--------|-------------|
+| `RED(name, energy)` | Add customer |
+| `BLUE(num)` | Remove customer by position |
+| `PURPLE()` | Traverse and process list |
+| `REVERSAL()` | Reverse customer order |
+| `UNLIMITED_VOID()` | Clear all customers |
+| `DOMAIN_EXPANSION()` | Hash table expansion |
+| `LIGHT(num)` | Tree-based lookup |
+
+## Getting Started
+
+### Build
+
+```bash
+g++ -o main.exe main.cpp Restaurant.cpp
+```
+
+### Run
+
+```bash
+./main.exe < test.txt
+```
+
+### Notes
+
+- Only `Restaurant.cpp` should be modified
+- Only `#include "main.h"` is allowed — no additional headers
+- All memory must be explicitly freed
